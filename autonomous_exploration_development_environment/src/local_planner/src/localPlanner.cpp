@@ -137,6 +137,15 @@ void dynamicReconfigureCallback(local_planner::LocalPlannerConfig &config, uint3
   vehicleLength = config.vehicleLength;
   vehicleWidth = config.vehicleWidth;
   goalClearRange = config.goalClearRange;
+
+  checkRotObstacle = config.checkRotObstacle;
+  dirThre = config.dirThre;
+  pathScale = config.pathScale;
+  minPathScale = config.minPathScale;
+  minPathRange = config.minPathRange;
+  adjacentRange = config.adjacentRange;
+  dirToVehicle = config.dirToVehicle;
+
   ROS_INFO("New maxSpeed: %f", config.maxSpeed);
   ROS_INFO("Two way drive is now: %s", twoWayDrive ? "enabled" : "disabled");
   ROS_INFO("The useTerrainAnalysis is now: %s", useTerrainAnalysis ? "enabled" : "disabled");
@@ -144,6 +153,16 @@ void dynamicReconfigureCallback(local_planner::LocalPlannerConfig &config, uint3
   ROS_INFO("New vehicleLength: %f", config.vehicleLength);
   ROS_INFO("New vehicleWidth: %f", config.vehicleWidth);
   ROS_INFO("New goalClearRange: %f", config.goalClearRange);
+
+  ROS_INFO("New checkRotObstacle: %s", checkRotObstacle ? "enabled" : "disabled");
+  ROS_INFO("New dirThre: %f", config.dirThre);
+  ROS_INFO("New goalClearRange: %f", config.goalClearRange);
+  ROS_INFO("New pathScale: %f", config.pathScale);
+  ROS_INFO("New minPathScale: %f", config.minPathScale);
+  ROS_INFO("New minPathRange: %f", config.minPathRange);
+  ROS_INFO("New adjacentRange: %f", config.adjacentRange);
+  ROS_INFO("New dirToVehicle: %f", config.dirToVehicle ? "enabled" : "disabled");
+  
   // 根据需要更新其他动态参数
 }
 

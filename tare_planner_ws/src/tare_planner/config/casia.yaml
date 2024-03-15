@@ -69,8 +69,8 @@ keypose_graph/kAddEdgeCollisionCheckRadius : 0.2
 keypose_graph/kAddEdgeCollisionCheckPointNumThr : 1
 
 # ViewPointManager
-viewpoint_manager/number_x : 50 #40
-viewpoint_manager/number_y : 50 #40
+viewpoint_manager/number_x : 60 #40
+viewpoint_manager/number_y : 60 #40
 viewpoint_manager/number_z : 1
 viewpoint_manager/resolution_x : 0.18 #0.15
 viewpoint_manager/resolution_y : 0.18 #0.15
