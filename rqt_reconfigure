@@ -1,0 +1,29 @@
+!!python/object/new:dynamic_reconfigure.encoding.Config
+dictitems:
+  groups: !!python/object/new:dynamic_reconfigure.encoding.Config
+    dictitems:
+      groups: !!python/object/new:dynamic_reconfigure.encoding.Config
+        state: []
+      id: 0
+      maxSpeed: 0.6
+      name: Default
+      obstacleHeightThre: 0.15
+      parameters: !!python/object/new:dynamic_reconfigure.encoding.Config
+        state: []
+      parent: 0
+      pkg: localPlanner
+      state: true
+      twoWayDrive: false
+      type: ''
+      useTerrainAnalysis: true
+      vehicleLength: 0.3
+      vehicleWidth: 0.3
+    state: []
+  maxSpeed: 0.6
+  obstacleHeightThre: 0.15
+  pkg: localPlanner
+  twoWayDrive: false
+  useTerrainAnalysis: true
+  vehicleLength: 0.3
+  vehicleWidth: 0.3
+state: []

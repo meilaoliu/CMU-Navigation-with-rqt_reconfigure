@@ -1,0 +1,2 @@
+/usr/bin/ar qc /home/lingao/cmu_car_ws/tare_planner_ws/devel/lib/libviewpoint_manager.a  CMakeFiles/viewpoint_manager.dir/src/viewpoint_manager/viewpoint_manager.cpp.o
+/usr/bin/ranlib /home/lingao/cmu_car_ws/tare_planner_ws/devel/lib/libviewpoint_manager.a

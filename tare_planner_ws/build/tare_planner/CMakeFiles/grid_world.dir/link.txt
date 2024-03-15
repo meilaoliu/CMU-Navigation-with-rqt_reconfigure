@@ -1,0 +1,2 @@
+/usr/bin/ar qc /home/lingao/cmu_car_ws/tare_planner_ws/devel/lib/libgrid_world.a  CMakeFiles/grid_world.dir/src/grid_world/grid_world.cpp.o
+/usr/bin/ranlib /home/lingao/cmu_car_ws/tare_planner_ws/devel/lib/libgrid_world.a
