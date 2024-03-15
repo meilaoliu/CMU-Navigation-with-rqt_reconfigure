@@ -1,6 +1,0 @@
-<launch>
-
-  <node pkg="waypoint_example_mine" type="waypoint_example_mine" name="waypoint_example_mine" output="screen" required="true">
-  </node>
-
-</launch>
