@@ -69,20 +69,20 @@ keypose_graph/kAddEdgeCollisionCheckRadius : 0.2
 keypose_graph/kAddEdgeCollisionCheckPointNumThr : 1
 
 # ViewPointManager
-viewpoint_manager/number_x : 60 #40
-viewpoint_manager/number_y : 60 #40
+viewpoint_manager/number_x : 70 #default 40 横轴视点数量  60
+viewpoint_manager/number_y : 70 #40
 viewpoint_manager/number_z : 1
-viewpoint_manager/resolution_x : 0.18 #0.15
-viewpoint_manager/resolution_y : 0.18 #0.15
+viewpoint_manager/resolution_x : 0.15 #0.15  视点分辨率  0.18
+viewpoint_manager/resolution_y : 0.15 #0.15
 viewpoint_manager/resolution_z : 0.0
 kConnectivityHeightDiffThr : 0.25
 kGreedyViewPointSampleRange : 3
 kLocalPathOptimizationItrMax : 10
-kViewPointCollisionMargin : 0.1 #0.1
-kViewPointCollisionMarginZPlus : 0.25
-kViewPointCollisionMarginZMinus : 0.25
+kViewPointCollisionMargin : 0.1 #0.1(视角碰撞边缘): 定义视角与障碍物之间的安全距离
+kViewPointCollisionMarginZPlus : 0.25 # (视角碰撞边缘-正Z轴方向): 在正Z轴方向上的视角碰撞边缘。障碍物高度阈值? ("可以在tare_planner里把障碍物高度阈值设得跟local_planner里的一致)
+kViewPointCollisionMarginZMinus : 0.25 # (视角碰撞边缘-负Z轴方向): 在负Z轴方向上的视角碰撞边缘
 kCollisionGridZScale : 1.0
-kCollisionGridResolutionX : 0.02
+kCollisionGridResolutionX : 0.02 #(碰撞网格分辨率X): 碰撞检测网格在X轴方向上的分辨率
 kCollisionGridResolutionY : 0.02
 kCollisionGridResolutionZ : 0.0
 kCollisionPointThr : 1
