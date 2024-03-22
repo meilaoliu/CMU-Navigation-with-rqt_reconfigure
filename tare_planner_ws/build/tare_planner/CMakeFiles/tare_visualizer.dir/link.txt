@@ -1,2 +1,0 @@
-/usr/bin/ar qc /home/lingao/cmu_car_ws/tare_planner_ws/devel/lib/libtare_visualizer.a  CMakeFiles/tare_visualizer.dir/src/tare_visualizer/tare_visualizer.cpp.o
-/usr/bin/ranlib /home/lingao/cmu_car_ws/tare_planner_ws/devel/lib/libtare_visualizer.a
