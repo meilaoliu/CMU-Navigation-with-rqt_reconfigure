@@ -199,8 +199,15 @@ void PublishCloud(const ros::Publisher& cloud_publisher, const PCLPointCloudType
 template <class ROSMsgType>
 void Publish(const ros::Publisher& publisher, ROSMsgType& msg, const std::string& frame_id)
 {
-  msg.header.frame_id = frame_id;
-  msg.header.stamp = ros::Time::now();
+  // msg.header.frame_id = frame_id;
+  // msg.header.stamp = ros::Time::now();
+  // publisher.publish(msg);
+
+  // 检查 ROSMsgType 是否为 geometry_msgs::Pose 类型
+  if constexpr (!std::is_same<ROSMsgType, geometry_msgs::Pose>::value) {
+      msg.header.frame_id = frame_id;
+      msg.header.stamp = ros::Time::now();
+  }
   publisher.publish(msg);
 }
 

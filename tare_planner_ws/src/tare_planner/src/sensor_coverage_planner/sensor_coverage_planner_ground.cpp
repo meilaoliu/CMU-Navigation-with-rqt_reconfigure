@@ -12,6 +12,8 @@
 #include "sensor_coverage_planner/sensor_coverage_planner_ground.h"
 #include "graph/graph.h"
 
+#include <geometry_msgs/Pose.h>
+
 namespace sensor_coverage_planner_3d_ns
 {
 bool PlannerParameters::ReadParameters(ros::NodeHandle& nh)
@@ -216,7 +218,10 @@ bool SensorCoveragePlanner3D::initialize(ros::NodeHandle& nh, ros::NodeHandle& n
   to_nearest_global_subspace_path_publisher_ = nh.advertise<nav_msgs::Path>("to_nearest_global_subspace_path", 1);
   local_tsp_path_publisher_ = nh.advertise<nav_msgs::Path>("local_path", 1);
   exploration_path_publisher_ = nh.advertise<nav_msgs::Path>("exploration_path", 1);
-  waypoint_pub_ = nh.advertise<geometry_msgs::PointStamped>(pp_.pub_waypoint_topic_, 2);
+
+  //waypoint_pub_ = nh.advertise<geometry_msgs::PointStamped>(pp_.pub_waypoint_topic_, 2);
+  waypoint_pub_ = nh.advertise<geometry_msgs::Pose>(pp_.pub_waypoint_topic_, 2);
+
   exploration_finish_pub_ = nh.advertise<std_msgs::Bool>(pp_.pub_exploration_finish_topic_, 2);
   runtime_breakdown_pub_ = nh.advertise<std_msgs::Int32MultiArray>(pp_.pub_runtime_breakdown_topic_, 2);
   runtime_pub_ = nh.advertise<std_msgs::Float32>(pp_.pub_runtime_topic_, 2);
@@ -1111,12 +1116,19 @@ bool SensorCoveragePlanner3D::GetLookAheadPoint(const exploration_path_ns::Explo
 
 void SensorCoveragePlanner3D::PublishWaypoint()
 {
-  geometry_msgs::PointStamped waypoint;
+  geometry_msgs::Pose waypoint;
+  //geometry_msgs::PointStamped waypoint;
   if (exploration_finished_ && near_home_ && pp_.kRushHome)
   {
-    waypoint.point.x = pd_.initial_position_.x();
-    waypoint.point.y = pd_.initial_position_.y();
-    waypoint.point.z = pd_.initial_position_.z();
+    // waypoint.point.x = pd_.initial_position_.x();
+    // waypoint.point.y = pd_.initial_position_.y();
+    // waypoint.point.z = pd_.initial_position_.z();
+    waypoint.position.x = pd_.initial_position_.x();
+    waypoint.position.y = pd_.initial_position_.y();
+    waypoint.position.z = pd_.initial_position_.z();
+
+     // 设置默认方向
+    waypoint.orientation = tf::createQuaternionMsgFromYaw(0);
   }
   else
   {
@@ -1130,11 +1142,20 @@ void SensorCoveragePlanner3D::PublishWaypoint()
       dx = dx / r * extend_dist;
       dy = dy / r * extend_dist;
     }
-    waypoint.point.x = dx + pd_.robot_position_.x;
-    waypoint.point.y = dy + pd_.robot_position_.y;
-    waypoint.point.z = pd_.lookahead_point_.z();
+    // waypoint.point.x = dx + pd_.robot_position_.x;
+    // waypoint.point.y = dy + pd_.robot_position_.y;
+    // waypoint.point.z = pd_.lookahead_point_.z();
+    waypoint.position.x = dx + pd_.robot_position_.x;
+    waypoint.position.y = dy + pd_.robot_position_.y;
+    waypoint.position.z = pd_.lookahead_point_.z();
+
+        // 计算并设置方向的四元数
+    // 假设有从(dx, dy)计算出的方向角度
+    double angle = atan2(dy, dx);
+    waypoint.orientation = tf::createQuaternionMsgFromYaw(angle);
   }
-  misc_utils_ns::Publish<geometry_msgs::PointStamped>(waypoint_pub_, waypoint, kWorldFrameID);
+  misc_utils_ns::Publish<geometry_msgs::Pose>(waypoint_pub_, waypoint, kWorldFrameID);
+  //misc_utils_ns::Publish<geometry_msgs::PointStamped>(waypoint_pub_, waypoint, kWorldFrameID);
 }
 
 void SensorCoveragePlanner3D::PublishRuntime()

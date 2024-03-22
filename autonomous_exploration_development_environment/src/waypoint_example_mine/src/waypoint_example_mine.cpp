@@ -6,6 +6,7 @@
 #include <rs_yolo/Info.h> 
 #include <cstdlib> // 包含abs函数
 #include <cmath> // 包含fabs函数
+#include <geometry_msgs/Pose2D.h>
 
 tf::TransformListener* tfListenerPtr;
 
@@ -57,12 +58,15 @@ void targetPositionCallback(const rs_yolo::Info::ConstPtr& msg, ros::Publisher& 
     double waypoint_y = target_y - forward_offset * sin(angle);
 
     // 创建并发布航点
-    geometry_msgs::PointStamped waypoint;
-    waypoint.header.frame_id = "map";
-    waypoint.header.stamp = ros::Time::now();
-    waypoint.point.x = waypoint_x;
-    waypoint.point.y = waypoint_y;
-    waypoint.point.z = waypoint_z;
+    //geometry_msgs::PointStamped waypoint;
+    geometry_msgs::Pose2D waypoint;
+    // waypoint.header.frame_id = "map";
+    // waypoint.header.stamp = ros::Time::now();
+    // waypoint.point.x = waypoint_x;
+    // waypoint.point.y = waypoint_y;
+    waypoint.x = waypoint_x;
+    waypoint.y = waypoint_y;
+    waypoint.theta = angle;
 
     waypointPub.publish(waypoint);
 }
@@ -73,8 +77,9 @@ int main(int argc, char** argv) {
 
     tf::TransformListener tfListener;
     tfListenerPtr = &tfListener;
-
-    ros::Publisher waypointPub = nh.advertise<geometry_msgs::PointStamped>("/way_point", 5);
+    
+    ros::Publisher waypointPub = nh.advertise<geometry_msgs::Pose2D>("/behaviortree/Nav_optimization", 5);
+    //ros::Publisher waypointPub = nh.advertise<geometry_msgs::PointStamped>("/way_point", 5);
     ros::Subscriber targetSub = nh.subscribe<rs_yolo::Info>("/detect_result_out", 5, boost::bind(targetPositionCallback, _1, boost::ref(waypointPub)));
 
     ros::spin();
