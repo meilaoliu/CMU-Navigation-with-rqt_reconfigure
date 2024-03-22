@@ -1,2 +1,0 @@
-/usr/bin/ar qc /home/lingao/cmu_car_ws/tare_planner_ws/devel/lib/libpointcloud_utils.a  CMakeFiles/pointcloud_utils.dir/src/utils/pointcloud_utils.cpp.o
-/usr/bin/ranlib /home/lingao/cmu_car_ws/tare_planner_ws/devel/lib/libpointcloud_utils.a

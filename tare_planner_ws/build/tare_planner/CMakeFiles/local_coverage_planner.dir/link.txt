@@ -1,2 +1,0 @@
-/usr/bin/ar qc /home/lingao/cmu_car_ws/tare_planner_ws/devel/lib/liblocal_coverage_planner.a  CMakeFiles/local_coverage_planner.dir/src/local_coverage_planner/local_coverage_planner.cpp.o
-/usr/bin/ranlib /home/lingao/cmu_car_ws/tare_planner_ws/devel/lib/liblocal_coverage_planner.a

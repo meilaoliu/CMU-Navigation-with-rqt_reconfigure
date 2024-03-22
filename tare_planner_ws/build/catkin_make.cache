@@ -1,2 +1,0 @@
-tare_planner
--DCATKIN_DEVEL_PREFIX=/home/lingao/cmu_car_ws/tare_planner_ws/devel -DCMAKE_INSTALL_PREFIX=/home/lingao/cmu_car_ws/tare_planner_ws/install -G Unix Makefiles
