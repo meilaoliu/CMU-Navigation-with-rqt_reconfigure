@@ -3,7 +3,7 @@
     <arg name="bag_path" default="Desktop"/>
     <arg name="bag_name_prefix" default="tare_matterport"/>
     <arg name="rviz" default="true"/>
-    <arg name="use_boundary" default="false"/>
+    <arg name="use_boundary" default="true"/>
     <include file="$(find tare_planner)/launch/explore.launch">
         <arg name="scenario" value="casia"/>
         <arg name="rosbag_record" value="$(arg rosbag_record)"/>
